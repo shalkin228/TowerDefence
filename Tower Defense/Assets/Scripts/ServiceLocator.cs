@@ -1,21 +1,27 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System;
 
-namespace Gameplay
+namespace TowerDefence
 {
-    public class ServiceLocator : MonoBehaviour
+    public static class ServiceLocator
     {
-        // Start is called before the first frame update
-        void Start()
+        private static readonly Dictionary<Type, object>
+            _services = new Dictionary<Type, object>();
+
+        public static void Register<T>(object serviceInstance)
         {
-        
+            _services[typeof(T)] = serviceInstance;
         }
 
-        // Update is called once per frame
-        void Update()
+        public static T Get<T>()
         {
-        
+            return (T)_services[typeof(T)];
         }
+
+        public static void Reset()
+        {
+            _services.Clear();
+        }
+
     }
 }

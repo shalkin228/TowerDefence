@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Gameplay.Camera
+namespace TowerDefence.Gameplay.Camera
 {
     public class CameraMovement : MonoBehaviour
     {
