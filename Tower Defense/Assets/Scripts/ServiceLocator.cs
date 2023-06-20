@@ -8,7 +8,7 @@ namespace TowerDefence
         private static readonly Dictionary<Type, object>
             _services = new Dictionary<Type, object>();
 
-        public static void Register<T>(object serviceInstance)
+        public static void Register<T>(T serviceInstance)
         {
             _services[typeof(T)] = serviceInstance;
         }
