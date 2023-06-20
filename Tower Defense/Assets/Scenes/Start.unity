@@ -496,7 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a46bcdd7b1e6864088d74ffe305d788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneToLoad: Camera Demo
+  _sceneToLoad: Tower Placing Demo
 --- !u!1 &1485655749
 GameObject:
   m_ObjectHideFlags: 0
