@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace TowerDefence.Input
@@ -7,14 +8,22 @@ namespace TowerDefence.Input
     {
         public Vector2 Movement => FormatVector(_controls.Camera.Movement.ReadValue<Vector2>());
         public float Zoom => FormatFloat(_controls.Camera.Zoom.ReadValue<Vector2>().y);
+        public Cursor Cursor => GetCursorData();
 
         private Controls _controls = new Controls();
 
         public StandartInputService()
         {
             _controls.Enable();
+        }
 
-            Application.quitting += _controls.Disable;
+        private Cursor GetCursorData()
+        {
+            return new Cursor
+            {
+                Position = _controls.Cursor.Position.ReadValue<Vector2>(),
+                WasPressedThisFrame = _controls.Cursor.Interact.WasPerformedThisFrame()
+            };
         }
 
         private Vector2 FormatVector(Vector2 value)

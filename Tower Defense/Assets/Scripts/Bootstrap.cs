@@ -22,6 +22,7 @@ namespace TowerDefence
             Debug.Log("Initializing game...");
 
             ServiceLocator.Register<IInputService>(new StandartInputService());
+            ServiceLocator.Register(new GameObject(nameof(CoroutineExecuter)).AddComponent<CoroutineExecuter>());
 
             _isInitialized = true;
 

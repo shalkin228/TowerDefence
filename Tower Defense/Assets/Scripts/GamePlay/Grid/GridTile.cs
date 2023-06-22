@@ -2,19 +2,19 @@ using UnityEngine;
 
 namespace TowerDefence.Gameplay
 {
-    public class GridTile : MonoBehaviour, IClickable
+    public class GridTile : MonoBehaviour, ICursorInteractable
     {
-        public void OnMouseClick(Vector3 clickHitPosition)
+        public void OnCursorClick(Vector3 clickHitPosition)
         {
             
         }
 
-        public void OnMouseHover()
+        public void OnCursorHover()
         {
             
         }
 
-        public void OnMouseLeave()
+        public void OnCursorLeave()
         {
             
         }
