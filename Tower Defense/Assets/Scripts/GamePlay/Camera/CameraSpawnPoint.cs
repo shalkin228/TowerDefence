@@ -7,7 +7,7 @@ namespace TowerDefence.Gameplay.Camera
         [SerializeField] private Vector3 _spawnOffset;
         [SerializeField] private GameObject _camera;
 
-        private void Awake()
+        public void Spawn()
         {
             Instantiate(_camera, transform.position + _spawnOffset, _camera.transform.rotation);
         }

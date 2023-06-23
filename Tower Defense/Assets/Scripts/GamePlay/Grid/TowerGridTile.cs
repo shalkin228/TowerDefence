@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TowerDefence.Gameplay
+namespace TowerDefence.Gameplay.Grid
 {
     public class TowerGridTile : MonoBehaviour, ICursorInteractable
     {
