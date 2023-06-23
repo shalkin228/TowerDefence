@@ -8,7 +8,7 @@ namespace TowerDefence.Input
     {
         public Vector2 Movement => FormatVector(_controls.Camera.Movement.ReadValue<Vector2>());
         public float Zoom => FormatFloat(_controls.Camera.Zoom.ReadValue<Vector2>().y);
-        public Cursor Cursor => GetCursorData();
+        public CursorData CursorData => GetCursorData();
 
         private Controls _controls = new Controls();
 
@@ -17,9 +17,9 @@ namespace TowerDefence.Input
             _controls.Enable();
         }
 
-        private Cursor GetCursorData()
+        private CursorData GetCursorData()
         {
-            return new Cursor
+            return new CursorData
             {
                 Position = _controls.Cursor.Position.ReadValue<Vector2>(),
                 WasPressedThisFrame = _controls.Cursor.Interact.WasPerformedThisFrame()

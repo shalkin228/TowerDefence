@@ -6,10 +6,10 @@ namespace TowerDefence.Input
     {
         Vector2 Movement { get; }
         float Zoom { get; }
-        Cursor Cursor { get; }  
+        CursorData CursorData { get; }  
     }
 
-    public struct Cursor
+    public struct CursorData
     {
         public Vector2 Position;
         public bool WasPressedThisFrame;

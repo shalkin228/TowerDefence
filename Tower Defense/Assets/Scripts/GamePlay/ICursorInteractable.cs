@@ -4,7 +4,7 @@ namespace TowerDefence.Gameplay
 {
     public interface ICursorInteractable
     {
-        void OnCursorHover();
+        void OnCursorEnter();
         void OnCursorLeave();
         void OnCursorClick(Vector3 clickHitPosition);
     }

@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 7627365349497465808}
   - component: {fileID: 1041745477340867618}
   - component: {fileID: 1525645366786342505}
+  - component: {fileID: 5463072892877606561}
   m_Layer: 0
   m_Name: Strategy Camera Rig
   m_TagString: Untagged
@@ -214,3 +215,19 @@ MonoBehaviour:
   _stepWidth: 0.1
   _maxZoom: 5
   _minZoom: -1
+--- !u!114 &5463072892877606561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8835008082421629514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6b1aef9dd981041812782c573ed69a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _raycastMaxDistance: 15

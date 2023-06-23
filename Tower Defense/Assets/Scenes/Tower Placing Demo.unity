@@ -164,7 +164,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 908144255}
-  m_Layer: 0
+  - component: {fileID: 908144256}
+  - component: {fileID: 908144257}
+  m_Layer: 6
   m_Name: Tower Grid Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,6 +189,39 @@ Transform:
   m_Father: {fileID: 543450652041407728}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &908144256
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908144254}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.01, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &908144257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908144254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a523b5bd979e0e408e9529d542041f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &953600169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -271,8 +306,7 @@ GameObject:
   - component: {fileID: 1234118372}
   - component: {fileID: 1234118375}
   - component: {fileID: 1234118374}
-  - component: {fileID: 1234118373}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Tower Grid Tile Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,28 +328,6 @@ Transform:
   m_Father: {fileID: 908144255}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1234118373
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1234118371}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1234118374
 MeshRenderer:
   m_ObjectHideFlags: 0

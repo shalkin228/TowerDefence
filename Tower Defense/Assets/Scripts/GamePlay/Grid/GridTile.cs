@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace TowerDefence.Gameplay
 {
@@ -6,17 +7,14 @@ namespace TowerDefence.Gameplay
     {
         public void OnCursorClick(Vector3 clickHitPosition)
         {
-            
         }
 
-        public void OnCursorHover()
+        public void OnCursorEnter()
         {
-            
         }
 
         public void OnCursorLeave()
         {
-            
         }
     }
 }
