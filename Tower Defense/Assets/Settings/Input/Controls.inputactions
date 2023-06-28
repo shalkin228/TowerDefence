@@ -180,6 +180,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Select Entity",
+            "id": "0d9ec14f-cabd-4c24-b0a1-57e0e7be36a7",
+            "actions": [
+                {
+                    "name": "Next Entity",
+                    "type": "Button",
+                    "id": "c1562643-916f-4def-9d1a-392a6b3d0e10",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Previous Entity",
+                    "type": "Button",
+                    "id": "5efd2a56-09a0-4cdc-b6df-693fb6d11baa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "dba4e99e-2153-442f-be76-c0f3dc1e298f",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next Entity",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7ae33daf-eda6-467b-b32e-9504493044ba",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Previous Entity",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

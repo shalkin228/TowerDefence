@@ -1,12 +1,22 @@
+using TowerDefence.Gameplay.Entity;
 using UnityEngine;
 
 namespace TowerDefence.Gameplay.Grid
 {
-    public class TowerGridTile : MonoBehaviour, ICursorInteractable
+    public class TowerGridTile : MonoBehaviour, ICursorInteractable, IEntityPlace
     {
-        public void OnCursorClick(Vector3 clickHitPosition)
+        private bool _isOpen = true;
+
+        public bool CanBePlaced()
         {
-            
+            return _isOpen;
+        }
+
+        public void Place(EntityFabric entityFabric, Vector3 position)
+        {
+            entityFabric.Spawn(transform.position, Quaternion.identity);
+
+            _isOpen = false;
         }
 
         public void OnCursorEnter()

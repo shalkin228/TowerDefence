@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace TowerDefence.Input
@@ -6,10 +7,12 @@ namespace TowerDefence.Input
     {
         Vector2 Movement { get; }
         float Zoom { get; }
-        CursorData CursorData { get; }  
+        CursorInput CursorInput { get; }
+        event Action OnNextEntityButton;
+        event Action OnPreviousEntityButton;
     }
 
-    public struct CursorData
+    public struct CursorInput
     {
         public Vector2 Position;
         public bool WasPressedThisFrame;

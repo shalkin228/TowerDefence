@@ -6,6 +6,5 @@ namespace TowerDefence.Gameplay
     {
         void OnCursorEnter();
         void OnCursorLeave();
-        void OnCursorClick(Vector3 clickHitPosition);
     }
 }

@@ -202,6 +202,54 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Select Entity"",
+            ""id"": ""0d9ec14f-cabd-4c24-b0a1-57e0e7be36a7"",
+            ""actions"": [
+                {
+                    ""name"": ""Next Entity"",
+                    ""type"": ""Button"",
+                    ""id"": ""c1562643-916f-4def-9d1a-392a6b3d0e10"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Previous Entity"",
+                    ""type"": ""Button"",
+                    ""id"": ""5efd2a56-09a0-4cdc-b6df-693fb6d11baa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""dba4e99e-2153-442f-be76-c0f3dc1e298f"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next Entity"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ae33daf-eda6-467b-b32e-9504493044ba"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Previous Entity"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -216,6 +264,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Cursor = asset.FindActionMap("Cursor", throwIfNotFound: true);
         m_Cursor_Position = m_Cursor.FindAction("Position", throwIfNotFound: true);
         m_Cursor_Interact = m_Cursor.FindAction("Interact", throwIfNotFound: true);
+        // Select Entity
+        m_SelectEntity = asset.FindActionMap("Select Entity", throwIfNotFound: true);
+        m_SelectEntity_NextEntity = m_SelectEntity.FindAction("Next Entity", throwIfNotFound: true);
+        m_SelectEntity_PreviousEntity = m_SelectEntity.FindAction("Previous Entity", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -397,6 +449,60 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public CursorActions @Cursor => new CursorActions(this);
+
+    // Select Entity
+    private readonly InputActionMap m_SelectEntity;
+    private List<ISelectEntityActions> m_SelectEntityActionsCallbackInterfaces = new List<ISelectEntityActions>();
+    private readonly InputAction m_SelectEntity_NextEntity;
+    private readonly InputAction m_SelectEntity_PreviousEntity;
+    public struct SelectEntityActions
+    {
+        private @Controls m_Wrapper;
+        public SelectEntityActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @NextEntity => m_Wrapper.m_SelectEntity_NextEntity;
+        public InputAction @PreviousEntity => m_Wrapper.m_SelectEntity_PreviousEntity;
+        public InputActionMap Get() { return m_Wrapper.m_SelectEntity; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SelectEntityActions set) { return set.Get(); }
+        public void AddCallbacks(ISelectEntityActions instance)
+        {
+            if (instance == null || m_Wrapper.m_SelectEntityActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SelectEntityActionsCallbackInterfaces.Add(instance);
+            @NextEntity.started += instance.OnNextEntity;
+            @NextEntity.performed += instance.OnNextEntity;
+            @NextEntity.canceled += instance.OnNextEntity;
+            @PreviousEntity.started += instance.OnPreviousEntity;
+            @PreviousEntity.performed += instance.OnPreviousEntity;
+            @PreviousEntity.canceled += instance.OnPreviousEntity;
+        }
+
+        private void UnregisterCallbacks(ISelectEntityActions instance)
+        {
+            @NextEntity.started -= instance.OnNextEntity;
+            @NextEntity.performed -= instance.OnNextEntity;
+            @NextEntity.canceled -= instance.OnNextEntity;
+            @PreviousEntity.started -= instance.OnPreviousEntity;
+            @PreviousEntity.performed -= instance.OnPreviousEntity;
+            @PreviousEntity.canceled -= instance.OnPreviousEntity;
+        }
+
+        public void RemoveCallbacks(ISelectEntityActions instance)
+        {
+            if (m_Wrapper.m_SelectEntityActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ISelectEntityActions instance)
+        {
+            foreach (var item in m_Wrapper.m_SelectEntityActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_SelectEntityActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public SelectEntityActions @SelectEntity => new SelectEntityActions(this);
     public interface ICameraActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -408,5 +514,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnPosition(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface ISelectEntityActions
+    {
+        void OnNextEntity(InputAction.CallbackContext context);
+        void OnPreviousEntity(InputAction.CallbackContext context);
     }
 }
