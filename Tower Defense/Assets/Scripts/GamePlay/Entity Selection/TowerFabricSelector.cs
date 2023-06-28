@@ -4,7 +4,7 @@ namespace TowerDefence.Gameplay.Entity
 {
     public class TowerFabricSelector : EntityFabricSelector
     {
-        private readonly string _EntityListPath = "Entity Lists/TowerEntityList";
+        private readonly string _EntityListPath = "Entity Lists/TowerFabricList";
 
         protected override EntityFabricList GetEntityList()
         {
