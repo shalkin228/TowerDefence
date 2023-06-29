@@ -10,6 +10,7 @@ namespace TowerDefence.Gameplay.Entity
         public event Action<EntityFabric> OnCurrentEntityFabricChange;
         public EntityFabric CurrentEntity { get; private set; }
 
+        protected abstract bool _needLogs { get; }
         private List<EntityFabric> _entityFabrics => _entityFabricList.List;
         private EntityFabricList _entityFabricList;
         private int _currentEntityIndex = 0;
@@ -28,7 +29,7 @@ namespace TowerDefence.Gameplay.Entity
             }
         }
 
-        public void SelectNextEntity() 
+        private void SelectNextEntity() 
         { 
             _currentEntityIndex++;
             _currentEntityIndex = Mathf.Clamp(_currentEntityIndex, 0, Mathf.Min(0, _entityFabrics.Count - 1));
@@ -39,9 +40,10 @@ namespace TowerDefence.Gameplay.Entity
 
             CurrentEntity = newEntity;
             OnCurrentEntityFabricChange?.Invoke(newEntity);
+            LogNewEntityFabric(CurrentEntity);
         }
 
-        public void SelectPreviousEntity() 
+        private void SelectPreviousEntity() 
         {
             _currentEntityIndex--;
             _currentEntityIndex = Mathf.Clamp(_currentEntityIndex, 0, Mathf.Min(0, _entityFabrics.Count - 1));
@@ -51,14 +53,26 @@ namespace TowerDefence.Gameplay.Entity
                 return;
 
             CurrentEntity = newEntity;
-            OnCurrentEntityFabricChange?.Invoke(newEntity); ;
+            OnCurrentEntityFabricChange?.Invoke(newEntity);
+            LogNewEntityFabric(CurrentEntity);
         }
 
         protected abstract EntityFabricList GetEntityList();
 
         private void SelectEntity(int index)
         {
-            _entityFabrics[Mathf.Clamp(index, 0, Mathf.Min(0, _entityFabrics.Count - 1))] = CurrentEntity;
+            CurrentEntity = _entityFabrics[Mathf.Clamp(index - 1, 0, Mathf.Max(0, _entityFabrics.Count - 1))];
+            OnCurrentEntityFabricChange?.Invoke(CurrentEntity);
+
+            LogNewEntityFabric(CurrentEntity);
+        }
+
+        private void LogNewEntityFabric(EntityFabric entityFabric)
+        {
+            if (_needLogs)
+            {
+                Debug.Log($"New entity fabric \"{entityFabric.Name}\" selected");
+            }
         }
     }
 }

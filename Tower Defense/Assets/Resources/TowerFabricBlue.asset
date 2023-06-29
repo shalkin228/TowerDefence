@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e7ee30c5df3bdc4a832b52e757da3bc, type: 3}
-  m_Name: TowerFabricList
+  m_Script: {fileID: 11500000, guid: 2343f6d212f97274fbf29a7c17f96f86, type: 3}
+  m_Name: TowerFabricBlue
   m_EditorClassIdentifier: 
-  _list:
-  - {fileID: 11400000, guid: a32dd5a70a2d32645a5cdd8e00b034c8, type: 2}
-  - {fileID: 11400000, guid: 5027d6d10d1fa9c4f97658b7b4cf87ef, type: 2}
+  _icon: {fileID: 0}
+  _name: Tower Blue
+  _prefab: {fileID: 1872998119331544211, guid: 2c3c83ed0bbce0c419dcf24d1ee04119, type: 3}
+  _spawnOffset: {x: 0, y: 0.505, z: 0}
