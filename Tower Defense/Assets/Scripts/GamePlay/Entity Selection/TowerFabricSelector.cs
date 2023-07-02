@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TowerDefence.Gameplay.Entity
+namespace TowerDefence.Gameplay.Entity.Tower
 {
     public class TowerFabricSelector : EntityFabricSelector
     {

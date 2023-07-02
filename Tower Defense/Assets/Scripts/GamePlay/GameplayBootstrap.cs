@@ -1,5 +1,6 @@
 using TowerDefence.Gameplay.Camera;
 using TowerDefence.Gameplay.Entity;
+using TowerDefence.Gameplay.Entity.Tower;
 using TowerDefence.Input;
 using UnityEngine;
 
