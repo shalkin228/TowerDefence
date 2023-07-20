@@ -23,9 +23,9 @@ namespace TowerDefence.Gameplay.Entity
             IInputService inputService = ServiceLocator.Get<IInputService>();
             inputService.OnNextEntityButton += SelectNextEntity;
             inputService.OnPreviousEntityButton += SelectPreviousEntity;
-            if (inputService is StandartInputService standartInputService)
+            if (inputService is IEntitySelectInputService entitySelectInputService)
             {
-                standartInputService.OnEntityIndexButton += SelectEntity;
+                entitySelectInputService.OnEntitySelectButton += SelectEntity;
             }
         }
 

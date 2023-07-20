@@ -23,8 +23,8 @@ namespace TowerDefence.Gameplay.Camera
 
         private void HandleMovement(Vector2 input)
         {
-            _newPosition += Vector3.right * _speed * input.x;
-            _newPosition += Vector3.forward * _speed * input.y;
+            _newPosition += Vector3.right * _speed * input.x * Time.deltaTime;
+            _newPosition += Vector3.forward * _speed * input.y * Time.deltaTime;
 
             transform.position = Vector3.Lerp(transform.position, _newPosition, Time.deltaTime * _aceleration);
         }

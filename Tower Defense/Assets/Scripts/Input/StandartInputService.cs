@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 namespace TowerDefence.Input
 {
     //Do not destroy this object!
-    public class StandartInputService : IInputService
+    public class StandartInputService : IEntitySelectInputService
     {
         public Vector2 Movement => FormatVector(_controls.Camera.Movement.ReadValue<Vector2>());
         public float Zoom => FormatFloat(_controls.Camera.Zoom.ReadValue<Vector2>().y);
@@ -22,15 +22,15 @@ namespace TowerDefence.Input
             add => _onPreviousEntityButton += value; 
             remove => _onPreviousEntityButton -= value;
         }
-        public event Action<int> OnEntityIndexButton
+        public event Action<int> OnEntitySelectButton
         {
-            add => _onEntityIndexButton += value;
-            remove => _onEntityIndexButton -= value;
+            add => _onEntitySelectButton += value;
+            remove => _onEntitySelectButton -= value;
         }
 
         private Action _onNextEntityButton;
         private Action _onPreviousEntityButton;
-        private Action<int> _onEntityIndexButton;
+        private Action<int> _onEntitySelectButton;
         private Controls _controls = new Controls();
         private readonly char[] _numbers = { '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
@@ -45,7 +45,7 @@ namespace TowerDefence.Input
             {
                 if (IsNumber(c, out int num))
                 {
-                    _onEntityIndexButton?.Invoke(num);
+                    _onEntitySelectButton?.Invoke(num);
                 }
             };
         }

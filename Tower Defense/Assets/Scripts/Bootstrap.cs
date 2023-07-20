@@ -20,7 +20,7 @@ namespace TowerDefence
                 return;
             }
             Debug.Log("Initializing game...");
-
+            QualitySettings.vSyncCount = 1;
             ServiceLocator.Register<IInputService>(new StandartInputService());
             ServiceLocator.Register(new GameObject(nameof(CoroutineExecuter)).AddComponent<CoroutineExecuter>());
 
